@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flashcard Flip</title>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0;
+    }
+
+    .card-container {
+      perspective: 1000px;
+    }
+
+    .flashcard {
+      width: 200px;
+      height: 300px;
+      background-color: #f4f4f9;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      cursor: pointer;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+    }
+
+    .flashcard.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: #333;
+    }
+
+    .card-front {
+      background-color: #fff;
+    }
+
+    .card-back {
+      background-color: #e7e7e7;
+      transform: rotateY(180deg);
+    }
+
+  </style>
+</head>
+<body>
+  <div class="card-container">
+    <div class="flashcard" onclick="flipCard()">
+      <div class="card-front">
+        <p>What is the capital of France?</p>
+      </div>
+      <div class="card-back">
+        <p>Paris</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function flipCard() {
+      const flashcard = document.querySelector('.flashcard');
+      flashcard.classList.toggle('flipped');
+    }
+  </script>
+</body>
+</html>
